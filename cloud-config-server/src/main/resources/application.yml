@@ -1,0 +1,34 @@
+server:
+  port: 3344
+
+
+#spring:
+#  application:
+#    name: xcjs-dev #注册进Eureka服务器的微服务名
+#  cloud:
+#    config:
+#      server:
+#        git:
+#          uri: https://github.com/hbjzhbn/xcjs-dev.git  #git的仓库地址
+#          search-paths:   #搜索目录
+#            - xcjs-dev
+#      label: main   #读取的分支
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka   #服务注册到的eureka地址
+
+
+spring:
+  application:
+    name: xcjs-dev
+  cloud:
+    config:
+      server:
+        git:
+          uri: git@github.com:hbjzhbn/xcjs-dev.git
+          skip-ssl-validation: true
+          search-paths:
+            - xcjs-dev
+      label: main
