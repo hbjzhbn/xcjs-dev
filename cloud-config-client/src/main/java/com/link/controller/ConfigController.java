@@ -1,8 +1,7 @@
-package io.link.controller;
+package com.link.controller;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -12,11 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
  **/
 @RestController
 public class ConfigController {
-    @Value("${spring.datasource.druid.url}")
-    private String url ;
+    @Value("${spring.datasource.druid.driver-class-name}")
+    private String port ;
 
-    @GetMapping("/url")
+    @GetMapping("/port")
     public String getConfigInfo(){
-        return url;
+        return port;
     }
 }

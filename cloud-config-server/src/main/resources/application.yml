@@ -18,17 +18,32 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:7001/eureka   #服务注册到的eureka地址
-
-
+    register-with-eureka: true
+    fetch-registry: true
 spring:
   application:
-    name: xcjs-dev
+    name: cloud-config-center #注册进Eureka服务器的微服务名
   cloud:
     config:
       server:
         git:
-          uri: git@github.com:hbjzhbn/xcjs-dev.git
-          skip-ssl-validation: true
-          search-paths:
-            - xcjs-dev
-      label: main
+#          uri: https://gitee.com/lixiaogou/sprincloud-config.git #GitHub上面的git仓库名字
+          uri: https://gitee.com/hbjzhbn/xjcs.git #GitHub上面的git仓库名字
+          search-paths: #搜索目录
+            - xcjs
+      label: master #读取分支
+      #启动成功后访问的路径 http://ip:3344/{label}/{application}-{profile}.yml 能访问的配置文件 就表示成功了
+#spring:
+      ##  application:
+      ##    name: xcjs-dev
+      ##  cloud:
+      ##    config:
+      ##      server:
+      ##        git:
+      ##          uri: https://github.com/jilinwula/springcloud-config.git
+      ##          skip-ssl-validation: true
+      ##          search-paths:
+    ##            - xcjs-dev
+    ##      label: main
+package:
+  style: "@project.packaging@"
